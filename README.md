@@ -13,7 +13,7 @@
 
 Its pretty simple Bin2Dec allows the user to enter a string of up to 8 binary digits (i.e. 0's and 1's), in any sequence and then displays decimal equivalent (or the other way around )
 
-### Licence 🪧
+### Licence 📇
 
 This Project is [licenced under MIT](Licence)
 
