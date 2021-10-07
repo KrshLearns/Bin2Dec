@@ -11,21 +11,37 @@
     <link rel="stylesheet" href="./css/style.css">
 </head>
 
-<body class="page">
-  <main class="container">
-    <div class="control">
-      <label for="allow-multiple" class="label">Binary</label>
-      <input type="number" class="input" id="input-binary" min="0" max="11111111">
-    </div>
-    <div class="control">
-      <label for="allow-multiple" class="label">Decimal</label>
-      <input type="number" class="input" id="input-decimal" min="0" max="640000">
-    </div>
-    <div class="control">
-      <button class="btn" id="btn-binary">Bin2Dec</button>
-      <button class="btn" id="btn-decimal">Dec2Bin</button>
-    </div>
-  </main>
+<body>
+  <header class="title">
+    <p>NUMBER SYSTEM</p>
+    <p>CONVERTER</p>
+  </header>
+  <div id="sels">
+    <select id="from">
+      <option value="bin">Binary</option>
+      <option value="oct">Octal</option>
+      <option value="dec">Decimal</option>
+      <option value="hex">Hexadecimal</option>
+    </select>
+    to
+    <select id="to">
+      <option value="bin">Binary</option>
+      <option value="oct">Octal</option>
+      <option value="dec">Decimal</option>
+      <option value="hex">Hexadecimal</option>
+    </select>
+  </div>
+  <div id="input">
+    INPUT
+    <input id="inp" type="text" value="">
+  </div>
+  <div id="output">
+    OUTPUT
+    <input id="oup" type="text" value="" disabled>
+  </div>
+  <div id="proc" onclick="check()">
+    CONVERT
+  </div>
   <script defer src="./js/script.js"></script>
 </body>
 
