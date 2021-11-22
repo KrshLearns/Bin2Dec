@@ -11,37 +11,40 @@
     <link rel="stylesheet" href="./css/style.css">
 </head>
 
-<body>
-  <header class="title">
-    <p>NUMBER SYSTEM</p>
-    <p>CONVERTER</p>
-  </header>
-  <div id="sels">
-    <select id="from">
-      <option value="bin">Binary</option>
-      <option value="oct">Octal</option>
-      <option value="dec">Decimal</option>
-      <option value="hex">Hexadecimal</option>
-    </select>
-    to
-    <select id="to">
-      <option value="bin">Binary</option>
-      <option value="oct">Octal</option>
-      <option value="dec">Decimal</option>
-      <option value="hex">Hexadecimal</option>
-    </select>
-  </div>
-  <div id="input">
-    INPUT
-    <input id="inp" type="text" value="">
-  </div>
-  <div id="output">
-    OUTPUT
-    <input id="oup" type="text" value="" disabled>
-  </div>
-  <div id="proc" onclick="check()">
-    CONVERT
-  </div>
+<body class="page">
+  <main class="container">
+    <div class="inline-control">
+      <div class="control">
+        <label class="label" for="from">From</label>
+        <select class="input" name="from" id="from">
+          <option value="binary">Binary</option>
+          <option value="octagonal">Octagonal</option>
+          <option value="decimal">Decimal</option>
+          <option value="hexadecimal">HexaDecimal</option>
+        </select>
+      </div>
+      <div class="control">
+        <label class="label" for="to">To</label>
+        <select class="input" name="to" id="to">
+          <option value="binary">Binary</option>
+          <option value="octagonal">Octagonal</option>
+          <option value="decimal">Decimal</option>
+          <option value="hexadecimal">HexaDecimal</option>
+        </select>
+      </div>
+    </div>
+    <div class="control">
+      <label for="allow-multiple" class="label">Input</label>
+      <input type="text" class="input" id="input">
+    </div>
+    <div class="control">
+      <label for="allow-multiple" class="label">Output</label>
+      <input type="text" class="input" id="output" aria-disabled="true" disabled>
+    </div>
+    <div class="control">
+      <button class="btn" id="btn">Convert</button>
+    </div>
+  </main>
   <script defer src="./js/script.js"></script>
 </body>
 
