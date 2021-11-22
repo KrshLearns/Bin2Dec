@@ -1,128 +1,80 @@
+const btn = document.getElementById("btn");
+const from = document.getElementById("from");
+const to = document.getElementById("to");
+const input = document.getElementById("input");
+const output = document.getElementById("output");
 
-sNames = ["bin", "oct", "dec", "hex"];
-sDigits = ["01", "01234567", "0123456789", "0123456789ABCDEFabcdef"];
-function check(){
-  sfrom=from.value;
-  sto=to.value;
-  if(!checkInp(sDigits[sNames.indexOf(sfrom)], inp.value)){
-    alert("Invalid input");
+const conversions = {
+  binary: 2,
+  octagonal: 8,
+  decimal: 10,
+  hexadecimal: 16,
+};
+
+btn.addEventListener("click", () => {
+  if (from.value === to.value) {
+    return alert("The input and output number system can't be the same");
   }
-  else{
-    if(sfrom==sto){
-      oup.value=inp.value;
+  
+  const inputType = conversions[from.value.toLowerCase()];
+  const outputType = conversions[to.value.toLowerCase()];
+
+  if (!input.value) {
+    return alert("You need to enter a input");
+  }
+  
+  if (!inputType || !outputType) {
+    return alert("A incorrect number system has been detected.");
+  }
+
+  if (checks[inputType](input.value) === false) {
+    return alert(`Invalid ${from.value} number detected`);
+  }
+  
+  output.value = parseInt(input.value, inputType).toString(outputType)
+});
+
+
+const checks = {
+  2: (str) => {
+    const array = str.split("");
+
+    for (var i of array) {
+      if (!(parseInt(i) === 0 || parseInt(i) === 1)) return false;
     }
-    else{
-      choose();
+    return true;
+  },
+
+  8: (str) => {
+    const regex = /[0-7]/;
+
+    const array = str.split("");
+
+    for (var i of array) {
+      if (!regex.test(parseInt(i))) return false;
     }
-  }
+    return true;
+  },
 
-}
-function checkInp(sys,num){
-  for(i=0; i<num.length; i++){
-    if(sys.indexOf(num[i])==-1){
-      return false;
+  10: (str) => {
+    const regex = /[0-9]/;
+
+    const array = str.split("");
+
+    for (var i of array) {
+      if (!regex.test(parseInt(i))) return false;
     }
-  }
-  return true;
-}
-function choose(){
-  if(sfrom=="bin"){
-    if(sto=="oct") oup.value=binToOct(inp.value);
-    else if(sto=="dec") oup.value=binToDec(inp.value);
-    else if(sto=="hex") oup.value=binToHex(inp.value);
-  }
-  else if(sfrom=="oct"){
-    if(sto=="bin") oup.value=octToBin(inp.value);
-    else if(sto=="dec") oup.value=octToDec(inp.value);
-    else if(sto=="hex") oup.value=octToHex(inp.value);
-  }
-  else if(sfrom=="dec"){
-    if(sto=="bin") oup.value=decToBin(inp.value);
-    else if(sto=="oct") oup.value=decToOct(inp.value);
-    else if(sto=="hex") oup.value=decToHex(inp.value);
-  }
-  else if(sfrom=="hex"){
-    if(sto=="bin") oup.value=hexToBin(inp.value);
-    else if(sto=="oct") oup.value=hexToOct(inp.value);
-    else if(sto=="dec") oup.value=hexToDec(inp.value);
-  }
-  else alert("Error");
-}
+    return true;
+  },
 
+  16: (str) => {
+    const regex = /[0-9A-Fa-f]/;
 
+    const array = str.split("");
 
-const decToBin = (str) =>
-{ 
-    str  = str * 1;
-    return str.toString(2);
-}
-
-const decToOct = (str) =>
-{ 
-    str  = str * 1;
-    return str.toString(8);
-}
-
-const decToHex = (str) =>
-{ 
-    str  = str * 1;
-    return str.toString(16);
-}
-
-const hexToBin = (str) =>
-{
-    let a = parseInt(str,16);
-    return a.toString(2);
-}
-
-
-const hexToDec = (str) =>
-{
-    return parseInt(str,16);
-}
-
-const hexToOct = (str) =>
-{
-    let a = parseInt(str,16);
-    return a.toString(8);
-}
-
-const binToDec = (str) =>
-{
-    return  parseInt(str,2);
-}
-
-const binToOct = (str) =>
-{
-    let a = parseInt(str,2);
-    return a.toString(8);
-}
-
-const binToHex = (str) =>
-{
-    let a = parseInt(str,2);
-    return a.toString(16);
-}
-
-const octToBin = (str) =>
-{
-    let a = parseInt(str,8);
-    return a.toString(2);
-}
-
-const octToDec = (str) =>
-{
-    return  parseInt(str,8);
-}
-
-const octToHex = (str) =>
-{
-    let a = parseInt(str,8);
-    return a.toString(16);
-}
-
-
-
-
-
-
+    for (var i of array) {
+      if (!(regex.test(i) && regex.test(parseInt(1)))) return false;
+    }
+    return true;
+  },
+};
