@@ -1,4 +1,6 @@
 const btn = document.getElementById("btn");
+const swap = document.getElementById("swap");
+const reset = document.getElementById("reset");
 const from = document.getElementById("from");
 const to = document.getElementById("to");
 const input = document.getElementById("input");
@@ -33,6 +35,16 @@ btn.addEventListener("click", () => {
   
   output.value = parseInt(input.value, inputType).toString(outputType)
 });
+swap.addEventListener("click", () => {
+  temp = from.value;
+  from.value = to.value;
+  to.value = temp;
+});
+reset.addEventListener("click", () => {
+  input.value = null;
+  output.value = null;
+});
+
 
 
 const checks = {
